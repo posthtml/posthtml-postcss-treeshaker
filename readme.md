@@ -6,7 +6,6 @@ A `posthtml` plugin to treeshake class and id styling in `style` tag on html pag
 [![NPM][npm]][npm-url]
 [![Deps][deps]][deps-url]
 [![Build][build]][build-badge]
-[![Coverage][cover]][cover-badge]
 [![Standard Code Style][style]][style-url]
 [![Chat][chat]][chat-badge]
 
