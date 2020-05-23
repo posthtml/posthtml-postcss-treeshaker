@@ -1,4 +1,6 @@
-# Experimental - WIP
+# posthtml-postcss-treeshaker
+
+A `posthtml` plugin to treeshake class and id styling in `style` tag on html page using `postcss`
 
 # PostHTML Plugin Boilerplate <img align="right" width="220" height="200" title="PostHTML logo" src="http://posthtml.github.io/posthtml/logo.svg">
 
@@ -9,14 +11,22 @@
 [![Standard Code Style][style]][style-url]
 [![Chat][chat]][chat-badge]
 
-Clone this repo and explain what your plugin do and why thousands of people need it ;)
+This plugin is used for reducing your file size
 
 Before:
 
 ```html
 <html>
   <body>
-    <p class="wow">OMG</p>
+    <p class="used">HELLO</p>
+    <style>
+      .used {
+        color: red;
+      }
+      .unused {
+        color: green;
+      }
+    </style>
   </body>
 </html>
 ```
@@ -24,24 +34,21 @@ Before:
 After:
 
 ```html
-<svg xmlns="http://www.w3.org/2000/svg">
-  <text
-    class="wow"
-    id="wow_id"
-    fill="#4A83B4"
-    fill-rule="evenodd"
-    font-family="Verdana"
-  >
-    OMG
-  </text>
-</svg>
+<html>
+  <body>
+    <p class="used">HELLO</p>
+    <style>
+      .used {
+        color: red;
+      }
+    </style>
+  </body>
+</html>
 ```
 
 ## Install
 
-Describe how big guys can install your plugin.
-
-> npm i posthtml posthtml-plugin
+> npm i posthtml posthtml-postcss-treeshaker
 
 ## Usage
 
@@ -51,7 +58,7 @@ necessary.
 ```js
 const fs = require("fs");
 const posthtml = require("posthtml");
-const posthtmlPlugin = require("posthtml-plugin");
+const posthtmlPlugin = require("posthtml-postcss-treeshaker");
 
 posthtml()
   .use(
@@ -61,45 +68,6 @@ posthtml()
   )
   .process(html /*, options */)
   .then(result => fs.writeFileSync("./after.html", result.html));
-```
-
-## Options
-
-Describe all features of your plugin with examples of usage.
-
-### Feature
-
-Before:
-
-```html
-<html>
-  <body>
-    <p>OMG</p>
-  </body>
-</html>
-```
-
-Add option:
-
-```js
-const fs = require("fs");
-const posthtml = require("posthtml");
-const posthtmlPlugin = require("posthtml-plugin");
-
-posthtml()
-  .use(posthtmlPlugin({ feature: "wow" }))
-  .process(html /*, options */)
-  .then(result => fs.writeFileSync("./after.html", result.html));
-```
-
-After:
-
-```html
-<html>
-  <body>
-    <p class="wow">OMG</p>
-  </body>
-</html>
 ```
 
 ### Contributing

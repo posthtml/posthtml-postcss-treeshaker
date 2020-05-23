@@ -1,18 +1,7 @@
 'use strict'
 
 const plugin = require('..')
-// const { readFileSync } = require('fs')
-// const path = require('path')
 const posthtml = require('posthtml')
-// const fixtures = path.join(__dirname, 'fixtures')
-
-// function snapshotCompare(name) {
-//   const html = readFileSync(path.join(fixtures, `${name}.html`), "utf8");
-
-//   return posthtml([plugin()])
-//     .process(html)
-//     .then(res => expect(res).toMatchSnapshot(name));
-// }
 
 const testCases = [
   {
@@ -36,8 +25,20 @@ const testCases = [
     output: `<h1 id="hello"></h1><styles> #hello{color: red}</styles>`
   },
   {
-    input: `<h1 id="hello"></h1><styles> #hello{color: red}; .hello{color: red}</styles>`,
-    output: `<h1 id="hello"></h1><styles> #hello{color: red}; .hello{color: red}</styles>`
+    input: `<h1 id="hello"></h1><style> #hello{color: red} .hello{color: red}</style>`,
+    output: `<h1 id="hello"></h1><style> #hello{color: red}</style>`
+  },
+  {
+    input: `<h1 class="hello"></h1><style> #hello{color: red} .hello{color: red}</style>`,
+    output: `<h1 class="hello"></h1><style> .hello{color: red}</style>`
+  },
+  {
+    input: `<h1 ></h1><style> #hello{color: red} .hello{color: red}</style>`,
+    output: `<h1></h1><style></style>`
+  },
+  {
+    input: `<h1 id="hello"></h1><style> #hello, .hello{color: red}</style>`,
+    output: `<h1 id="hello"></h1><style> #hello, .hello{color: red}</style>`
   }
 ]
 
