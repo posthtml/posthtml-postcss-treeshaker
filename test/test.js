@@ -1,6 +1,6 @@
 'use strict'
 
-const plugin = require('..')
+const plugin = require('../lib')
 const posthtml = require('posthtml')
 
 const testCases = [
