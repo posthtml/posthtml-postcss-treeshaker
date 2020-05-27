@@ -11,6 +11,8 @@ A `posthtml` plugin to treeshake class and id styling in `style` tag on html pag
 
 This plugin is used for reducing your file size
 
+> Experimental - Work in progress
+
 Before:
 
 ```html
