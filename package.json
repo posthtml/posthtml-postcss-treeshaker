@@ -5,7 +5,7 @@
   "author": "Aniketh Saha <anik220798@gmail.om>",
   "bugs": "https://github.com/anikethsaha/posthtml-postcss-treeshaker/issues",
   "dependencies": {
-    "postcss": "^7.0.30",
+    "postcss": "^8.2.10",
     "postcss-selector-parser": "^6.0.2",
     "posthtml": "^0.13.0"
   },
